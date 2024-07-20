@@ -18,9 +18,10 @@ a:visited {
   cursor: pointer;
 }
 
-button,
+button, input,
 ._btn {
   cursor: pointer;
+  font-family: "Montserrat", sans-serif;
 }
 
 ul li {
