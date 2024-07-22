@@ -1,26 +1,17 @@
-import { Track } from "@components/Track/Track";
+import { Track } from "@/components/Track/Track";
 import styles from "./Playlist.module.css";
+import { TrackType } from "@/types/tracks";
 
-export function Playlist() {
+type PlaylistProps = {
+  tracks: TrackType[];
+};
+
+export function Playlist({ tracks }: PlaylistProps) {
   return (
     <div className={styles.contentPlaylist}>
-      <Track />
-      <Track />
-      <Track />
-      <Track />
-      <Track />
-      <Track />
-      <Track />
-      <Track />
-      <Track />
-      <Track />
-      <Track />
-      <Track />
-      <Track />
-      <Track />
-      <Track />
-      <Track />
-      <Track />
+      {tracks.map((track) => (
+        <Track track={track} key={track.id} />
+      ))}
     </div>
   );
 }

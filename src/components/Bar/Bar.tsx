@@ -1,6 +1,6 @@
-import { Player } from "@components/Player/Player";
+import { Player } from "@/components/Player/Player";
 import styles from "./Bar.module.css";
-import { Volume } from "@components/Volume/Volume";
+import { Volume } from "@/components/Volume/Volume";
 
 export function Bar() {
   return (

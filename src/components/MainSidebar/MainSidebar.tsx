@@ -1,6 +1,6 @@
-import Image from "next/image";
+//import Image from "next/image";
 import styles from "./MainSidebar.module.css";
-import { SidebarItem } from "@components/SidebarItem/SidebarItem";
+import { SidebarItem } from "@/components/SidebarItem/SidebarItem";
 
 export function MainSidebar() {
   return (
