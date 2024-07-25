@@ -14,14 +14,14 @@
 a,
 a:visited {
   text-decoration: none;
-  font-family: "Montserrat", sans-serif;
+  font-family: inherit;
   cursor: pointer;
 }
 
 button, input,
 ._btn {
   cursor: pointer;
-  font-family: "Montserrat", sans-serif;
+  font-family: inherit;
 }
 
 ul li {
