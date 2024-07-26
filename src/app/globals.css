@@ -18,7 +18,8 @@ a:visited {
   cursor: pointer;
 }
 
-button, input,
+button,
+input,
 ._btn {
   cursor: pointer;
   font-family: inherit;

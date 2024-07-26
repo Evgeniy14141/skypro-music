@@ -19,7 +19,7 @@ export default async function Home() {
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
-      <Main tracks={tracks} />
+        <Main tracks={tracks} />
         <Bar />
         <footer className="footer"></footer>
       </div>

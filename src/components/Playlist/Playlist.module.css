@@ -62,6 +62,6 @@
   flex-direction: column;
   overflow: auto;
   scrollbar-width: thin;
-  scrollbar-color: #ffffff #4B4949;
+  scrollbar-color: #ffffff #4b4949;
   height: 700px;
 }
