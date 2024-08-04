@@ -8,8 +8,9 @@
   flex-direction: column;
   overflow: auto;
   height: 600px;
+  cursor: pointer;
 }
-
+ 
 .centerblockContent {
   display: flex;
   flex-direction: column;
