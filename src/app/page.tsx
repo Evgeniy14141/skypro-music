@@ -22,6 +22,15 @@ export default function Home() {
       });
   }, []);
 
+  /* try {
+    tracks = await getTracks();
+  } catch (error: unknown) {
+    if (error instanceof Error)
+      throw new Error(
+        "Возникли проблемы при загрузке треков: " + error.message
+      );
+    throw new Error("Неизвестная ошибка");
+  } */
 
   return (
     <div className={styles.wrapper}>

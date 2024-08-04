@@ -11,7 +11,7 @@ export function Playlist({ tracks, setTrack }: PlaylistProps) {
   return (
     <div className={styles.contentPlaylist}>
       {tracks.map((track) => (
-        <Track track={track} key={track._id} onClick={() => setTrack(track)} />
+        <Track track={track} key={track.id} onClick={() => setTrack(track)} />
       ))}
     </div>
   );
