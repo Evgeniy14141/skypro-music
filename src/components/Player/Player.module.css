@@ -60,6 +60,7 @@
 
 .playerBtnPrev {
   margin-right: 23px;
+  cursor: pointer;
 }
 
 .playerBtnPrevSvg {
@@ -69,6 +70,7 @@
 
 .playerBtnPlay {
   margin-right: 23px;
+  cursor: pointer;
 }
 
 .playerBtnPlaySvg {
@@ -80,12 +82,13 @@
 .playerBtnNext {
   margin-right: 28px;
   fill: #a53939;
+  cursor: pointer;
 }
 
 .playerBtnNextSvg {
   width: 15px;
   height: 14px;
-  fill: Montserrat;
+  fill: inherit;
   stroke: #d9d9d9;
 }
 
@@ -116,6 +119,10 @@
   stroke: #696969;
 }
 
+.active {
+  stroke: #ffffff;
+}
+
 .trackPlay {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -132,7 +139,7 @@
   display: grid;
   -ms-grid-columns: auto 1fr;
   grid-template-columns: auto 1fr;
-  grid-template-areas: "image author" "image album";
+  grid-template-areas: "image author""image album";
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
