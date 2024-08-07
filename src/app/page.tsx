@@ -11,10 +11,11 @@ export default async function Home() {
   try {
     tracks = await getTracks();
   } catch (error: unknown) {
-    errorMessage =
-      error instanceof Error
-        ? "Возникли проблемы при загрузке треков: " + error.message
-        : "Неизвестная ошибка";
+    if (error instanceof Error)
+      throw new Error(
+        "Возникли проблемы при загрузке треков: " + error.message
+      );
+    throw new Error("Неизвестная ошибка");
   }
 
   return (
