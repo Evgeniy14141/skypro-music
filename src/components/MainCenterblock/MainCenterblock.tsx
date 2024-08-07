@@ -6,16 +6,15 @@ import { TrackType } from "@/types/tracks";
 
 type MainCenterblockProps = {
   tracks: TrackType[];
-  setTrack: (track: TrackType) => void;
 };
 
-export function MainCenterblock({ tracks, setTrack }: MainCenterblockProps) {
+export function MainCenterblock({ tracks }: MainCenterblockProps) {
   return (
     <div className={styles.mainCenterblock}>
       <Search />
       <h2 className={styles.centerblockH2}>Треки</h2>
       <Filter tracks={tracks} />
-      <PlaylistContent tracks={tracks} setTrack={setTrack} />
+      <PlaylistContent tracks={tracks} />
     </div>
   );
 }
