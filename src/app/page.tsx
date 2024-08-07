@@ -1,36 +1,21 @@
-"use client";
-
 import { Bar } from "@/components/Bar/Bar";
 import styles from "./page.module.css";
 import { Main } from "@/components/Main/Main";
 import { TrackType } from "@/types/tracks";
 import { getTracks } from "@/api/getTracksApi";
-import { useEffect, useState } from "react";
 
-export default function Home() {
-  const [track, setTrack] = useState<TrackType>();
-  const [tracks, setTracks] = useState<TrackType[]>([]);
-  const [errorMessage, setErrorMessage] = useState("");
+export default async function Home() {
+  let tracks: TrackType[] = [];
+  let errorMessage = "";
 
-  useEffect(() => {
-    getTracks()
-      .then((tracks) => {
-        setTracks(tracks);
-      })
-      .catch((error) => {
-        setErrorMessage(error);
-      });
-  }, []);
-
-  /* try {
+  try {
     tracks = await getTracks();
   } catch (error: unknown) {
-    if (error instanceof Error)
-      throw new Error(
-        "Возникли проблемы при загрузке треков: " + error.message
-      );
-    throw new Error("Неизвестная ошибка");
-  } */
+    errorMessage =
+      error instanceof Error
+        ? "Возникли проблемы при загрузке треков: " + error.message
+        : "Неизвестная ошибка";
+  }
 
   return (
     <div className={styles.wrapper}>
@@ -38,9 +23,9 @@ export default function Home() {
         {errorMessage ? (
           <div className={styles.error}>{errorMessage}</div>
         ) : (
-          <Main tracks={tracks} setTrack={setTrack} />
+          <Main tracks={tracks} />
         )}
-        {track && <Bar track={track} />}
+        <Bar />
         <footer className="footer"></footer>
       </div>
     </div>

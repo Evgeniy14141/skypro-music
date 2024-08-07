@@ -5,14 +5,13 @@ import { TrackType } from "@/types/tracks";
 
 type PlaylistContentProps = {
   tracks: TrackType[];
-  setTrack: (track: TrackType) => void;
 };
 
-export function PlaylistContent({ tracks, setTrack }: PlaylistContentProps) {
+export function PlaylistContent({ tracks }: PlaylistContentProps) {
   return (
     <div className={styles.centerblockContent}>
       <PlaylistTitle />
-      <Playlist tracks={tracks} setTrack={setTrack} />
+      <Playlist tracks={tracks} />
     </div>
   );
 }
