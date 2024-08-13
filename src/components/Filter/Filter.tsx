@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { TrackType } from "@/types/tracks";
 import styles from "./Filter.module.css";
 import { FilterItem } from "@/components/FilterItem/FilterItem";
 import { getUniqueValues } from "@/utils/getUniqueValues";
+import { TrackType } from "@/types/tracks";
 
 const filterNames: string[] = ["исполнителю", "году выпуска", "жанру"];
 
