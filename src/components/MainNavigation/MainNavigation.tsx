@@ -3,6 +3,7 @@
 import Image from "next/image";
 import styles from "./MainNavigation.module.css";
 import { useState } from "react";
+import Link from "next/link";
 
 export function MainNavigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,19 +31,19 @@ export function MainNavigation() {
         <div className={styles.navMenu}>
           <ul className={styles.menuList}>
             <li className={styles.menuItem}>
-              <a href="#" className={styles.menuLink}>
+              <Link href="/tracks" className={styles.menuLink}>
                 Главное
-              </a>
+              </Link>
             </li>
             <li className={styles.menuItem}>
-              <a href="#" className={styles.menuLink}>
+              <Link href="/tracks/favorite" className={styles.menuLink}>
                 Мой плейлист
-              </a>
+              </Link>
             </li>
             <li className={styles.menuItem}>
-              <a href="../signin.html" className={styles.menuLink}>
+              <Link href="/signin" className={styles.menuLink}>
                 Войти
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

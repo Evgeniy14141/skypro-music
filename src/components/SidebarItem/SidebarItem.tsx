@@ -1,10 +1,11 @@
 import Image from "next/image";
 import styles from "./SidebarItem.module.css";
+import Link from "next/link";
 
 export function SidebarItem() {
   return (
     <div className={styles.sidebarItem}>
-      <a className={styles.sidebarLink} href="#">
+      <Link className={styles.sidebarLink} href="/tracks/selection/1">
         <Image
           className={styles.sidebarImg}
           src="/img/playlist01.png"
@@ -13,7 +14,7 @@ export function SidebarItem() {
           height={150}
           priority
         />
-      </a>
+      </Link>
     </div>
   );
 }

@@ -1,20 +1,21 @@
 import { PlaylistContent } from "@/components/PlaylistContent/PlaylistContent";
-import styles from "./MainCenterblock.module.css";
-import { Search } from "@/components/Search/Search";
+
 import { Filter } from "@/components/Filter/Filter";
 import { TrackType } from "@/types/tracks";
 
+import styles from "./MainCenterblock.module.css";
+
 type MainCenterblockProps = {
   tracks: TrackType[];
+  title: string;
 };
 
-export function MainCenterblock({ tracks }: MainCenterblockProps) {
+export function MainCenterblock({ tracks, title }: MainCenterblockProps) {
   return (
-    <div className={styles.mainCenterblock}>
-      <Search />
-      <h2 className={styles.centerblockH2}>Треки</h2>
+    <>
+      <h2 className={styles.centerblockH2}>{title}</h2>
       <Filter tracks={tracks} />
       <PlaylistContent tracks={tracks} />
-    </div>
+    </>
   );
 }

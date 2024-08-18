@@ -6,8 +6,9 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  overflow: auto;
-  height: 600px;
+ overflow-y: scroll;
+ overflow-x: hidden;
+  height: 500px;
   cursor: pointer;
 }
  
@@ -61,7 +62,8 @@
 .contentPlaylist {
   display: flex;
   flex-direction: column;
-  overflow: auto;
+  /* overflow: auto; */
+  overflow-y: scroll;
   scrollbar-width: thin;
   scrollbar-color: #ffffff #4b4949;
   height: 700px;
