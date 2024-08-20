@@ -4,9 +4,9 @@ import { TrackType } from "@/types/tracks";
 import styles from "./Track.module.css";
 import { formatTime } from "@/utils/formatTime";
 import { setCurrentTrack } from "@/store/features/tracksSlice";
-import { useAppDispatch, useAppSelector } from "../../store/store";
+import { useAppDispatch, useAppSelector } from "@/store/store";
 import cn from "classnames";
-import { useLikeTrack } from "@/hooks/useLikeTrack";
+import { useLikeTrack } from "../../hooks/useLikeTrack";
 
 type TrackProps = {
   track: TrackType;

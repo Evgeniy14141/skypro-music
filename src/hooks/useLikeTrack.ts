@@ -1,7 +1,7 @@
 import { TrackType } from "@/types/tracks";
 import { useAppDispatch, useAppSelector } from "@/store/store";
-import { addLikeTrack, removeLikeTrack } from "@/api/getTracksApi";
 import { setDislike, setLike } from "@/store/features/tracksSlice";
+import { addLikeTrack, removeLikeTrack } from "@/api/getTracksApi";
 
 export function useLikeTrack(track: TrackType) {
   const dispatch = useAppDispatch();

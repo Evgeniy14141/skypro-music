@@ -1,5 +1,4 @@
 import { PlaylistContent } from "@/components/PlaylistContent/PlaylistContent";
-
 import { Filter } from "@/components/Filter/Filter";
 import { TrackType } from "@/types/tracks";
 
