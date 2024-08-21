@@ -25,7 +25,7 @@ export function Bar() {
 
     if (audio) {
       if (track) {
-        audio.src = track.track_file;
+        /* audio.src = track.track_file; */
         audio.play();
         dispatch(setIsPlaying(true));
       }

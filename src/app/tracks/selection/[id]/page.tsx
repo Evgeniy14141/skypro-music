@@ -18,7 +18,7 @@ export default function SelectionPage() {
         const tracks = await getSelectionTracks(id);
 
         const res = allTracks.filter((track) =>
-          tracks.items.includes(track.id)
+          tracks.items.includes(track._id)
         );
 
         setSelectionName(tracks.name);
@@ -31,7 +31,7 @@ export default function SelectionPage() {
     getData();
   }, [id]);
 
-  console.log(selectionTracks);
+  /* console.log(selectionTracks); */
 
   return <MainCenterblock tracks={selectionTracks} title={selectionName} />;
 }

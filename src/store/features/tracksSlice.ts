@@ -45,7 +45,7 @@ const playlistSlice = createSlice({
         ? [...state.initialPlaylist].sort(() => Math.random() - 0.5)
         : state.initialPlaylist;
       const currentIndex = playlist.findIndex(
-        (track) => track.id === state.currentTrack?.id
+        (track) => track._id === state.currentTrack?._id
       );
       if (playlist.length - 1 === currentIndex) {
         state.isPlaying = false;
@@ -58,8 +58,9 @@ const playlistSlice = createSlice({
         ? [...state.initialPlaylist].sort(() => Math.random() - 0.5)
         : state.initialPlaylist;
       const currentIndex = playlist.findIndex(
-        (track) => track.id === state.currentTrack?.id
+        (track) => track._id === state.currentTrack?._id
       );
+      /* console.log("currentIndex", currentIndex); */
       if (!currentIndex) {
         state.isPlaying = false;
         return;
@@ -80,7 +81,7 @@ const playlistSlice = createSlice({
     },
     setDislike: (state, action: PayloadAction<TrackType>) => {
       state.likedTracks = state.likedTracks.filter(
-        (track) => track.id !== action.payload.id
+        (track) => track._id !== action.payload._id
       );
     },
   },

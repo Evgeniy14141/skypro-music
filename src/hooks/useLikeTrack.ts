@@ -9,7 +9,7 @@ export function useLikeTrack(track: TrackType) {
   const user = useAppSelector((state) => state.user.user);
   const likedTracks = useAppSelector((state) => state.playlist.likedTracks);
 
-  const isLiked = !!likedTracks.find((t) => t.id === track.id);
+  const isLiked = !!likedTracks.find((t) => t._id === track._id);
 
   async function handleLike(event: React.MouseEvent<HTMLDivElement>) {
     event.stopPropagation();
@@ -23,7 +23,7 @@ export function useLikeTrack(track: TrackType) {
     const storeAction = isLiked ? setDislike : setLike;
 
     try {
-      await fetchAction(tokens.access, track.id);
+      await fetchAction(tokens.access, track._id);
       dispatch(storeAction(track));
     } catch (error) {
       console.log(error);

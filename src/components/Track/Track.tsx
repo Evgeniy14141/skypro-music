@@ -6,7 +6,7 @@ import { formatTime } from "@/utils/formatTime";
 import { setCurrentTrack } from "@/store/features/tracksSlice";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import cn from "classnames";
-import { useLikeTrack } from "../../hooks/useLikeTrack";
+import { useLikeTrack } from "@/hooks/useLikeTrack";
 
 type TrackProps = {
   track: TrackType;
@@ -23,7 +23,7 @@ export function Track({ track, tracks }: TrackProps) {
     dispatch(setCurrentTrack({ currentTrack: track, playlist: tracks }));
   }
 
-  const conditionCurrentTrack = currentTrack?.id === track.id;
+  const conditionCurrentTrack = currentTrack?._id === track._id;
 
   return (
     <div className={styles.playlistItem} onClick={handleSelectTrack}>
@@ -56,7 +56,7 @@ export function Track({ track, tracks }: TrackProps) {
             <svg className={styles.trackTimeSvg}>
               <use
                 xlinkHref={`/img/icon/sprite.svg#icon-${
-                  isLiked ? "like" : "dislike"
+                  isLiked ? "dislike" : "like"
                 }`}
               ></use>
             </svg>

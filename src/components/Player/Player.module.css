@@ -239,3 +239,10 @@
   fill: transparent;
   stroke: #696969;
 }
+
+.trackTimeSvg {
+  width: 14px;
+  height: 12px;
+  fill: transparent;
+  stroke: #696969;
+}
