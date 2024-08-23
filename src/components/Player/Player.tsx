@@ -27,7 +27,7 @@ export function Player({
   isLoop,
 }: PlayerProps) {
   const dispatch = useAppDispatch();
-  const { isShuffle, initialPlaylist } = useAppSelector(
+  const { isShuffle } = useAppSelector(
     (state) => state.playlist
   );
 
