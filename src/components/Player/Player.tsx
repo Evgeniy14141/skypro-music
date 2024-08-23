@@ -120,7 +120,7 @@ export function Player({
               <svg className={styles.trackTimeSvg}>
                 <use
                   xlinkHref={`/img/icon/sprite.svg#icon-${
-                    isLiked ? "dislike" : "like"
+                    isLiked ? "like-purple" : "like"
                   }`}
                 ></use>
               </svg>

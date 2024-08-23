@@ -24,7 +24,7 @@ export async function login({ email, password }: LoginProps) {
   });
 
   if (!response.ok && response.status === 401) {
-    throw new Error("Неверный логин или пароль");
+    throw new Error("Не найдено активной учётной записи с указанными данными");
   } else if (!response.ok && response.status === 400) {
     throw new Error("Запрос составлен некорректно");
   } else if (!response.ok && response.status === 412) {
