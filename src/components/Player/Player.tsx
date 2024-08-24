@@ -9,6 +9,7 @@ import {
   setNextTrack,
   setPrevTrack,
 } from "@/store/features/tracksSlice";
+import { useLikeTrack } from "@/hooks/useLikeTrack";
 
 type PlayerProps = {
   track: TrackType | null;
@@ -26,30 +27,18 @@ export function Player({
   isLoop,
 }: PlayerProps) {
   const dispatch = useAppDispatch();
-  const { isShuffle, initialPlaylist } = useAppSelector(
+  const { isShuffle } = useAppSelector(
     (state) => state.playlist
   );
 
-  const nextTrack = () => {
-    const playlist = isShuffle
-      ? [...initialPlaylist].sort(() => Math.random() - 0.5)
-      : initialPlaylist;
-    const currentIndex = playlist.findIndex((t) => t.id === track?.id);
+  const { isLiked, handleLike } = useLikeTrack(track!);
 
-    if (currentIndex < playlist.length - 1) {
-      dispatch(setNextTrack());
-    }
+  const nextTrack = () => {
+    dispatch(setNextTrack());
   };
 
   const prevTrack = () => {
-    const playlist = isShuffle
-      ? [...initialPlaylist].sort(() => Math.random() - 0.5)
-      : initialPlaylist;
-    const currentIndex = playlist.findIndex((t) => t.id === track?.id);
-
-    if (currentIndex > 0) {
-      dispatch(setPrevTrack());
-    }
+    dispatch(setPrevTrack());
   };
 
   const toggleShuffle = () => {
@@ -61,7 +50,7 @@ export function Player({
       <div className={styles.playerControls}>
         <div className={styles.playerBtnPrev}>
           <svg className={styles.playerBtnPrevSvg} onClick={prevTrack}>
-            <use href="img/icon/sprite.svg#icon-prev"></use>
+            <use href="/img/icon/sprite.svg#icon-prev"></use>
           </svg>
         </div>
         <div className={styles.playerBtnPlay} onClick={togglePlay}>
@@ -69,15 +58,15 @@ export function Player({
             <use
               href={
                 isPlaying
-                  ? "img/icon/sprite.svg#icon-pause"
-                  : "img/icon/sprite.svg#icon-play"
+                  ? "/img/icon/sprite.svg#icon-pause"
+                  : "/img/icon/sprite.svg#icon-play"
               }
             ></use>
           </svg>
         </div>
         <div className={styles.playerBtnNext} onClick={nextTrack}>
           <svg className={styles.playerBtnNextSvg}>
-            <use href="img/icon/sprite.svg#icon-next"></use>
+            <use href="/img/icon/sprite.svg#icon-next"></use>
           </svg>
         </div>
         <div
@@ -89,7 +78,7 @@ export function Player({
               [styles.active]: isLoop,
             })}
           >
-            <use href="img/icon/sprite.svg#icon-repeat"></use>
+            <use href="/img/icon/sprite.svg#icon-repeat"></use>
           </svg>
         </div>
         <div
@@ -101,7 +90,7 @@ export function Player({
               [styles.active]: isShuffle,
             })}
           >
-            <use href="img/icon/sprite.svg#icon-shuffle"></use>
+            <use href="/img/icon/sprite.svg#icon-shuffle"></use>
           </svg>
         </div>
       </div>
@@ -110,7 +99,7 @@ export function Player({
         <div className={styles.trackPlayContain}>
           <div className={styles.trackPlayImage}>
             <svg className={styles.trackPlaySvg}>
-              <use href="img/icon/sprite.svg#icon-note"></use>
+              <use href="/img/icon/sprite.svg#icon-note"></use>
             </svg>
           </div>
           <div className={styles.trackPlayAuthor}>
@@ -127,14 +116,15 @@ export function Player({
 
         <div className={styles.trackPlayLikeDis}>
           <div className={cn(styles.trackPlayLike, styles.btnIcon)}>
-            <svg className={styles.trackPlayLikeSvg}>
-              <use href="img/icon/sprite.svg#icon-like"></use>
-            </svg>
-          </div>
-          <div className={cn(styles.trackPlayDislike, styles.btnIcon)}>
-            <svg className={styles.trackPlayDislikeSvg}>
-              <use href="img/icon/sprite.svg#icon-dislike"></use>
-            </svg>
+            <div onClick={handleLike}>
+              <svg className={styles.trackTimeSvg}>
+                <use
+                  xlinkHref={`/img/icon/sprite.svg#icon-${
+                    isLiked ? "like-purple" : "like"
+                  }`}
+                ></use>
+              </svg>
+            </div>
           </div>
         </div>
       </div>

@@ -4,8 +4,9 @@ import { TrackType } from "@/types/tracks";
 import styles from "./Track.module.css";
 import { formatTime } from "@/utils/formatTime";
 import { setCurrentTrack } from "@/store/features/tracksSlice";
-import { useAppDispatch, useAppSelector } from "../../store/store";
+import { useAppDispatch, useAppSelector } from "@/store/store";
 import cn from "classnames";
+import { useLikeTrack } from "@/hooks/useLikeTrack";
 
 type TrackProps = {
   track: TrackType;
@@ -16,12 +17,13 @@ export function Track({ track, tracks }: TrackProps) {
   const { name, author, album, duration_in_seconds } = track;
   const dispatch = useAppDispatch();
   const { currentTrack, isPlaying } = useAppSelector((state) => state.playlist);
+  const { isLiked, handleLike } = useLikeTrack(track);
 
   function handleSelectTrack() {
     dispatch(setCurrentTrack({ currentTrack: track, playlist: tracks }));
   }
 
-  const conditionCurrentTrack = currentTrack?.id === track.id;
+  const conditionCurrentTrack = currentTrack?._id === track._id;
 
   return (
     <div className={styles.playlistItem} onClick={handleSelectTrack}>
@@ -29,7 +31,7 @@ export function Track({ track, tracks }: TrackProps) {
         <div className={styles.trackTitle}>
           <div className={styles.trackTitleImage}>
             <svg className={styles.trackTitleSvg}>
-              <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
+              <use xlinkHref="/img/icon/sprite.svg#icon-note"></use>
             </svg>
           </div>
           {conditionCurrentTrack && (
@@ -50,9 +52,15 @@ export function Track({ track, tracks }: TrackProps) {
           <span className={styles.trackAlbumLink}>{album}</span>
         </div>
         <div className={styles.trackItem}>
-          <svg className={styles.trackTimeSvg}>
-            <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
-          </svg>
+          <div onClick={handleLike}>
+            <svg className={styles.trackTimeSvg}>
+              <use
+                xlinkHref={`/img/icon/sprite.svg#icon-${
+                  isLiked ? "like-purple" : "like"
+                }`}
+              ></use>
+            </svg>
+          </div>
           <span className={styles.trackTimeText}>
             {formatTime(duration_in_seconds)}
           </span>

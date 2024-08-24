@@ -10,7 +10,8 @@
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  overflow-y: scroll;
+  /* overflow-y: scroll;
+  overflow-x: hidden; */
 }
 
 .footer {

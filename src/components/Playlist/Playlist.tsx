@@ -10,7 +10,7 @@ export function Playlist({ tracks }: PlaylistProps) {
   return (
     <div className={styles.contentPlaylist}>
       {tracks.map((track) => (
-        <Track track={track} key={track.id} tracks={tracks} />
+        <Track track={track} key={track._id} tracks={tracks} />
       ))}
     </div>
   );
