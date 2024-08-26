@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { PlaylistTitle } from "./PlaylistTitle";
-import '@testing-library/jest-dom'
+import "@testing-library/jest-dom";
 
 describe("PlaylistTitle", () => {
   it("render PlaylistTitle", () => {
