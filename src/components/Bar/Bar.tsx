@@ -21,11 +21,10 @@ export function Bar() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-  const audio = audioRef.current;
+    const audio = audioRef.current;
 
     if (audio) {
       if (track) {
-        /* audio.src = track.track_file; */
         audio.play();
         dispatch(setIsPlaying(true));
       }

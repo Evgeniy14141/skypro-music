@@ -1,6 +1,5 @@
 import { FC } from "react";
 
-//import { MainCenterblock } from "@/components/MainCenterblock/MainCenterblock";
 import { TrackType } from "@/types/tracks";
 
 type MainProps = {

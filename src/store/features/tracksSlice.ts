@@ -60,7 +60,7 @@ const playlistSlice = createSlice({
       const currentIndex = playlist.findIndex(
         (track) => track._id === state.currentTrack?._id
       );
-      /* console.log("currentIndex", currentIndex); */
+
       if (!currentIndex) {
         state.isPlaying = false;
         return;
