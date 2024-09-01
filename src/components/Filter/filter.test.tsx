@@ -1,14 +1,3 @@
-/* import { render, screen } from "@testing-library/react";
-import { Filter } from "@/components/Filter/Filter";
-
-describe("filter", () => {
-  it("render titleFilter", () => {
-    render(<Filter tracks={[]} />);
-    const text = screen.getAllByText("Искать по:");
-    expect(text.length).toBeGreaterThan(0);
-  });
-}); */
-
 import { render, screen } from "@testing-library/react";
 import { Filter } from "./Filter";
 import configureStore from "redux-mock-store";
@@ -21,7 +10,7 @@ describe("filter component", () => {
   it("render titleFilter", () => {
     const component = render(
       <Provider store={store}>
-        <Filter  />
+        <Filter />
       </Provider>
     );
     const text = screen.getAllByText("Искать по:");

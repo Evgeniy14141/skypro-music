@@ -4,7 +4,7 @@ import { Player } from "@/components/Player/Player";
 import styles from "./Bar.module.css";
 import { Volume } from "@/components/Volume/Volume";
 import { ProgressBar } from "@/components/ProgressBar/ProgressBar";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import { formatTime } from "@/utils/formatTime";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import { setIsPlaying, setNextTrack } from "@/store/features/tracksSlice";
@@ -19,6 +19,14 @@ export function Bar() {
     (state) => state.playlist
   );
   const dispatch = useAppDispatch();
+
+  const timePlaying = useMemo(() => {
+    return formatTime(currentTime)
+  }, [currentTime]);
+
+  const timeDuration = useMemo(() => {
+    return formatTime(duration)
+  }, [duration]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -100,7 +108,8 @@ export function Bar() {
     <div className={styles.bar}>
       <div className={styles.barContent}>
         <div className={styles.barTimer}>
-          {formatTime(currentTime)} / {formatTime(duration)}
+          {/* {formatTime(currentTime)} / {formatTime(duration)} */}
+          {timePlaying} / {timeDuration}
         </div>
         <ProgressBar
           max={duration}

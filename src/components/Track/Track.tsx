@@ -7,6 +7,7 @@ import { setCurrentTrack } from "@/store/features/tracksSlice";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import cn from "classnames";
 import { useLikeTrack } from "@/hooks/useLikeTrack";
+import { useCallback } from "react";
 
 type TrackProps = {
   track: TrackType;
@@ -19,9 +20,12 @@ export function Track({ track, tracks }: TrackProps) {
   const { currentTrack, isPlaying } = useAppSelector((state) => state.playlist);
   const { isLiked, handleLike } = useLikeTrack(track);
 
-  function handleSelectTrack() {
+  /* function handleSelectTrack() {
     dispatch(setCurrentTrack({ currentTrack: track, playlist: tracks }));
-  }
+  } */
+  const handleSelectTrack = useCallback(() => {
+    dispatch(setCurrentTrack({ currentTrack: track, playlist: tracks }));
+  }, [dispatch, tracks, track]);
 
   const conditionCurrentTrack = currentTrack?._id === track._id;
 
