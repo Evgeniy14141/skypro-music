@@ -4,7 +4,7 @@ import Image from "next/image";
 import styles from "./MainNavigation.module.css";
 import { useState } from "react";
 import Link from "next/link";
-import { useAppSelector } from "@/store/store";
+import { useAppSelector, useAppDispatch } from "@/store/store";
 
 export function MainNavigation() {
   const [isOpen, setIsOpen] = useState(false);
