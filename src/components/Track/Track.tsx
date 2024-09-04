@@ -20,9 +20,6 @@ export function Track({ track, tracks }: TrackProps) {
   const { currentTrack, isPlaying } = useAppSelector((state) => state.playlist);
   const { isLiked, handleLike } = useLikeTrack(track);
 
-  /* function handleSelectTrack() {
-    dispatch(setCurrentTrack({ currentTrack: track, playlist: tracks }));
-  } */
   const handleSelectTrack = useCallback(() => {
     dispatch(setCurrentTrack({ currentTrack: track, playlist: tracks }));
   }, [dispatch, tracks, track]);

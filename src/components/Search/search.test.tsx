@@ -10,7 +10,7 @@ describe("test Search component", () => {
   it("render Search", async () => {
     const component = render(
       <Provider store={store}>
-        <Search/>
+        <Search />
       </Provider>
     );
     const text = await screen.findByPlaceholderText("Поиск");

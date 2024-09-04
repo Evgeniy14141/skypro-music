@@ -27,9 +27,7 @@ export function Player({
   isLoop,
 }: PlayerProps) {
   const dispatch = useAppDispatch();
-  const { isShuffle } = useAppSelector(
-    (state) => state.playlist
-  );
+  const { isShuffle } = useAppSelector((state) => state.playlist);
 
   const { isLiked, handleLike } = useLikeTrack(track!);
 

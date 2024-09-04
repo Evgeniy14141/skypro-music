@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { PlaylistContent } from "@/components/PlaylistContent/PlaylistContent";
 import { Filter } from "@/components/Filter/Filter";
@@ -17,7 +17,7 @@ type MainCenterblockProps = {
 export function MainCenterblock({ tracks, title }: MainCenterblockProps) {
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(setInitialPlaylist(tracks))
+    dispatch(setInitialPlaylist(tracks));
   }, [tracks, dispatch]);
   return (
     <>

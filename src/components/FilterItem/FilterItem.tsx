@@ -23,7 +23,7 @@ export default function FilterItem({
     (state) => state.playlist.filterOptions.order
   );
   const tracksData = useAppSelector((state) => state.playlist.initialPlaylist);
-  console.log(tracksData);
+
   const dispatch = useAppDispatch();
   const authorsList = useAppSelector(
     (state) => state.playlist.filterOptions.author

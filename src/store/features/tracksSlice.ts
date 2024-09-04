@@ -107,8 +107,11 @@ const playlistSlice = createSlice({
       (state.filterOptions = {
         author: action.payload.author || state.filterOptions.author,
         genre: action.payload.genre || state.filterOptions.genre,
+
         searchValue:
-          action.payload.searchValue || state.filterOptions.searchValue,
+          action.payload.searchValue !== undefined
+            ? action.payload.searchValue
+            : state.filterOptions.searchValue,
         order: action.payload.order || state.filterOptions.order,
       }),
         (state.filteredTracks = state.initialPlaylist.filter((track) => {
@@ -117,9 +120,7 @@ const playlistSlice = createSlice({
             ? state.filterOptions.author.includes(track.author)
             : true;
           const hasGenres = state.filterOptions.genre.length !== 0;
-          /* const isGenres = hasGenres
-            ? state.filterOptions.genre.includes(track.genre.flat())
-            : true; */
+
           const isGenres = hasGenres
             ? track.genre.some((genre) =>
                 state.filterOptions.genre.includes(genre)
@@ -140,7 +141,6 @@ const playlistSlice = createSlice({
             new Date(a.release_date).getTime() -
             new Date(b.release_date).getTime()
         );
-        console.log(state.filteredTracks);
       }
       if (state.filterOptions.order === "Сначала новые") {
         state.filteredTracks = state.filteredTracks.sort(

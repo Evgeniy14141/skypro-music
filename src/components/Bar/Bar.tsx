@@ -21,11 +21,11 @@ export function Bar() {
   const dispatch = useAppDispatch();
 
   const timePlaying = useMemo(() => {
-    return formatTime(currentTime)
+    return formatTime(currentTime);
   }, [currentTime]);
 
   const timeDuration = useMemo(() => {
-    return formatTime(duration)
+    return formatTime(duration);
   }, [duration]);
 
   useEffect(() => {
@@ -108,7 +108,6 @@ export function Bar() {
     <div className={styles.bar}>
       <div className={styles.barContent}>
         <div className={styles.barTimer}>
-          {/* {formatTime(currentTime)} / {formatTime(duration)} */}
           {timePlaying} / {timeDuration}
         </div>
         <ProgressBar
