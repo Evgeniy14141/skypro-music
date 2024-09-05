@@ -33,7 +33,7 @@ type UserStateType = {
   tokens: TokenType | null;
 };
 
-const initialState: UserStateType = {
+export const initialState: UserStateType = {
   user: null,
   tokens: null,
 };

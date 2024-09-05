@@ -62,7 +62,6 @@
 .contentPlaylist {
   display: flex;
   flex-direction: column;
-  /* overflow: auto; */
   overflow-y: scroll;
   scrollbar-width: thin;
   scrollbar-color: #ffffff #4b4949;

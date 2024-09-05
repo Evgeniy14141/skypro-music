@@ -1,5 +1,4 @@
 import { SideBarPersonal } from "@/components/SideBarPersonal/SideBarPersonal";
-//import { useInitLikedTracks } from "@/hooks/useInitLikedTracks";
 import styles from "./MainSidebar.module.css";
 import { SidebarItem } from "@/components/SidebarItem/SidebarItem";
 

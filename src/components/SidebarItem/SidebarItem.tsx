@@ -2,8 +2,8 @@ import Image from "next/image";
 import styles from "./SidebarItem.module.css";
 import Link from "next/link";
 
-type SidebarProps = { src: string, alt: string, href: string }
-export function SidebarItem({ src, alt, href}: SidebarProps) {
+type SidebarProps = { src: string; alt: string; href: string };
+export function SidebarItem({ src, alt, href }: SidebarProps) {
   return (
     <div className={styles.sidebarItem}>
       <Link className={styles.sidebarLink} href={href}>

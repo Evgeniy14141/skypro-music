@@ -1,56 +1,46 @@
 "use client";
 
-import { useState } from "react";
 import styles from "./Filter.module.css";
-import { FilterItem } from "@/components/FilterItem/FilterItem";
-import { getUniqueValues } from "@/utils/getUniqueValues";
-import { TrackType } from "@/types/tracks";
+import FilterItem from "@/components/FilterItem/FilterItem";
+import { useState } from "react";
+import { filters } from "@/components/FilterItem/data";
+import { useAppSelector } from "@/store/store";
 
-const filterNames: string[] = ["исполнителю", "году выпуска", "жанру"];
-
-type FilterProps = {
-  tracks: TrackType[];
-};
-
-export function Filter({ tracks }: FilterProps) {
+export function Filter() {
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
-
-  function handleChangeFilter(filterName: string) {
-    setActiveFilter((prevState) =>
-      prevState === filterName ? null : filterName
-    );
+  function handleFilterClick(newFilter: string) {
+    setActiveFilter((prev) => (prev === newFilter ? null : newFilter));
   }
-
-  function getUnique(): string[] {
-    if (activeFilter === "исполнителю") {
-      return getUniqueValues(tracks, "author");
-    }
-
-    if (activeFilter === "жанру") {
-      return getUniqueValues(tracks, "genre");
-    }
-
-    if (activeFilter === "году выпуска") {
-      return ["По умолчанию", "Сначала новые", "Сначала старые"];
-    }
-
-    return [];
-  }
-
-  const uniqueValues = getUnique();
-
+  const authorsList = useAppSelector(
+    (state) => state.playlist.filterOptions.author
+  );
+  const genresList = useAppSelector(
+    (state) => state.playlist.filterOptions.genre
+  );
   return (
     <div className={styles.centerblockFilter}>
       <div className={styles.filterTitle}>Искать по:</div>
-      {filterNames.map((filterName, index) => (
-        <FilterItem
-          filterName={filterName}
-          key={index}
-          isActive={activeFilter === filterName}
-          handleChangeFilter={handleChangeFilter}
-          list={uniqueValues}
-        />
-      ))}
+      <FilterItem
+        isOpened={activeFilter === filters[0].title ? true : false}
+        handleFilterClick={handleFilterClick}
+        title={filters[0].title}
+        value={filters[0].value}
+        filterQuantity={authorsList.length}
+      />
+      <FilterItem
+        isOpened={activeFilter === filters[1].title ? true : false}
+        handleFilterClick={handleFilterClick}
+        title={filters[1].title}
+        value={filters[1].value}
+        filterQuantity={genresList.length}
+      />
+      <FilterItem
+        isOpened={activeFilter === filters[2].title ? true : false}
+        handleFilterClick={handleFilterClick}
+        title={filters[2].title}
+        value={filters[2].value}
+        filterQuantity={0}
+      />
     </div>
   );
 }
